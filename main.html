@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investitsiya va Innovatsiya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ══════════════════════════════════════
+       GLOBAL RESET
+    ══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; overflow-x: hidden; }
+    body { font-family: 'Montserrat', sans-serif; }
+
+    /* ══════════════════════════════════════
+       SECTION 0 — HERO (index.html)
+    ══════════════════════════════════════ */
+    #hero {
+      --bg-dark: #151b40;
+      --bg-light: #1b2762;
+      --green: #1dd186;
+      --green-dark: #128a57;
+      --text-white: #ffffff;
+      --text-gray: #8e95af;
+      background: linear-gradient(135deg, #151b40 0%, #1b2762 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #hero .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+    #hero .content-side { flex: 1; max-width: 600px; width: 100%; }
+    #hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 10px; text-transform: uppercase; }
+    #hero h1 .highlight { color: #1dd186; display: block; }
+    #hero .white-span { color: #fff; }
+    #hero .subtitle { font-size: clamp(0.85rem,2vw,1.2rem); font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    #hero .logos-placeholder { width: 100%; max-width: 450px; height: 45px; border-radius: 8px; object-fit: contain; margin-bottom: 25px; display: block; }
+    #hero .divider { color: #8e95af; font-size: 0.9rem; margin-bottom: 20px; }
+    #hero h2 { font-size: clamp(1.5rem,4vw,2.5rem); font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+    #hero .investor-info { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    #hero .investor-text { color: #8e95af; font-size: 0.85rem; text-transform: uppercase; font-weight: 500; }
+    #hero .badge-btn { background-color: rgba(29,209,134,0.15); color: #1dd186; border: 1px solid #1dd186; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: all 0.3s; white-space: nowrap; }
+    #hero .badge-btn:hover { background-color: #1dd186; color: #fff; }
+    #hero .action-buttons { display: flex; gap: 16px; margin-top: 35px; flex-wrap: wrap; }
+    #hero .btn { padding: 14px 24px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    #hero .btn-primary { background-color: #10B981; color: white; }
+    #hero .btn-primary:hover { background-color: #128a57; }
+    #hero .btn-primary-span { background-color: rgba(255,255,255,0.2); padding: 2px 4px; border-radius: 8px; }
+    #hero .btn-secondary { background-color: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+    #hero .btn-secondary:hover { border-color: white; background-color: rgba(255,255,255,0.1); }
+    #hero .image-side { flex: 1; position: relative; display: flex; justify-content: flex-end; align-items: flex-end; min-height: 520px; }
+    #hero .main-person-img { position: absolute; bottom: 28px; right: -20px; width: 100%; max-width: 480px; height: auto; min-height: 460px; object-fit: cover; border-radius: 10px; z-index: 1; }
+    #hero .info-card { position: absolute; left: -69px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; z-index: 2; max-width: 430px; }
+    #hero .tag-pmef { background: rgba(29,209,134,0.2); color: #1dd186; padding: 5px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+    #hero .tag-pmef::before { content: ""; display: inline-block; width: 6px; height: 6px; background-color: #ff4757; border-radius: 50%; }
+    #hero .card-text { font-size: 0.78rem; line-height: 1.45; color: #ddd; }
+    #hero .mobile-hero { display: none; }
+
+    @media (max-width: 1100px) {
+      #hero .main-person-img { right: 0; max-width: 420px; }
+      #hero .info-card { left: -10px; max-width: 300px; }
+    }
+    @media (max-width: 768px) {
+      #hero { align-items: flex-start; }
+      #hero .container { flex-direction: column; padding: 32px 20px 48px; gap: 0; align-items: flex-start; }
+      #hero .image-side { display: none; }
+      #hero .content-side { max-width: 100%; }
+      #hero .heading-block { margin-bottom: 20px; }
+      #hero .mobile-hero { display: flex; align-items: stretch; gap: 0; width: 100%; margin-bottom: 24px; border-radius: 12px; overflow: hidden; min-height: 180px; }
+      #hero .mobile-person-col { flex: 0 0 45%; position: relative; overflow: hidden; }
+      #hero .mobile-person-col img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; background: rgba(255,255,255,0.04); min-height: 180px; }
+      #hero .mobile-card-col { flex: 1; background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-left: none; padding: 16px 14px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+      #hero .mobile-card-col .tag-pmef { align-self: flex-start; }
+      #hero .mobile-card-col .card-text { font-size: 0.75rem; line-height: 1.5; }
+      #hero .logos-placeholder { max-width: 100%; height: 38px; }
+      #hero .action-buttons { flex-direction: column; gap: 12px; }
+      #hero .btn { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      #hero h1 { font-size: 1.75rem; }
+      #hero h2 { font-size: 1.4rem; }
+      #hero .subtitle { font-size: 0.78rem; letter-spacing: 0.5px; }
+      #hero .investor-info { flex-direction: column; align-items: flex-start; gap: 8px; }
+      #hero .mobile-hero { min-height: 160px; }
+      #hero .mobile-person-col img { min-height: 160px; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 1 — SERVICES (section-1.html)
+    ══════════════════════════════════════ */
+    #services {
+      --bg-body: #f5f6f8;
+      --bg-card: #ffffff;
+      --text-dark: #0f172a;
+      --text-gray: #64748b;
+      --accent-blue: #1d4ed8;
+      --border-color: #e2e8f0;
+      background-color: #f5f6f8;
+      color: #0f172a;
+      padding: 40px 20px;
+      line-height: 1.5;
+    }
+    #services .container { max-width: 1200px; margin: 0 auto; }
+    #services .section-tag { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(30,64,175,1); margin-bottom: 12px; }
+    #services .main-title { font-size: 36px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; color: rgba(13,27,62,1); }
+    #services .subtitle { font-size: 18px; color: rgba(100,116,139,1); margin-bottom: 40px; }
+    #services .services-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 20px; margin-bottom: 50px; }
+    #services .card { background-color: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); position: relative; }
+    #services .card-top { display: flex; flex-direction: column; align-items: flex-start; flex-grow: 1; }
+    #services .card-icon { width: 48px; height: 48px; object-fit: contain; margin-bottom: 16px; background-color: #f1f5f9; border-radius: 12px; display: block; }
+    #services .card-title { font-size: 15px; font-weight: 700; color: rgba(13,27,62,1); margin-bottom: 24px; line-height: 1.3; }
+    #services .card-footer { font-size: 15px; font-weight: 700; color: rgba(30,64,175,1); display: flex; align-items: center; gap: 8px; }
+    #services .price-text { font-size: 18px; font-weight: 800; }
+    #services .card-star { position: absolute; top: 24px; right: 24px; width: 16px; height: 16px; object-fit: contain; }
+    #services .curator-section { margin-top: 40px; }
+    #services .curator-card { background-color: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; border-left: 5px solid #1d4ed8; display: flex; align-items: center; gap: 20px; }
+    #services .curator-avatar { width: 64px; height: 64px; border-radius: 12px; object-fit: cover; background-color: #f1f5f9; display: none; }
+    #services .curator-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: rgba(13,27,62,1); }
+    #services .curator-role { font-size: 14px; color: rgba(100,116,139,1); margin-bottom: 4px; }
+
+    @media (max-width: 992px) {
+      #services .services-grid { grid-template-columns: repeat(2,1fr); }
+      #services .services-grid .card:last-child { grid-column: span 2; flex-direction: row; align-items: center; }
+      #services .services-grid .card:last-child .card-top { flex-direction: row; align-items: center; gap: 16px; margin-bottom: 0; }
+      #services .services-grid .card:last-child .card-icon { margin-bottom: 0; }
+      #services .services-grid .card:last-child .card-title { margin-bottom: 0; }
+    }
+    @media (max-width: 768px) {
+      #services .section-tag, #services .card-footer { color: rgba(0,200,150,1); }
+      #services .main-title { font-size: 28px; }
+      #services .subtitle { font-size: 16px; }
+      #services .services-grid .card:last-child { flex-direction: column; align-items: flex-start; }
+      #services .services-grid .card:last-child .card-top { flex-direction: column; align-items: flex-start; gap: 0; }
+      #services .services-grid .card:last-child .card-icon { margin-bottom: 16px; }
+      #services .services-grid .card:last-child .card-title { margin-bottom: 24px; }
+      #services .curator-card { border-left: 1px solid #e2e8f0; background-color: #f8fafc; }
+      #services .curator-avatar { display: block; }
+      #services .card-star { display: none; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 2 — STAGES (section-2.html)
+    ══════════════════════════════════════ */
+    #stages {
+      --bg-color: #f4f6f8;
+      --text-dark: #121929;
+      --text-gray: #7b8898;
+      --primary-blue: #223f8c;
+      --light-blue: #ebf0fc;
+      --green-btn: #5dc691;
+      --white: #ffffff;
+      --line-color: #d8e2f3;
+      background-color: #f4f6f8;
+      color: #121929;
+      line-height: 1.5;
+    }
+    #stages .innovation-section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+    #stages .section-header { margin-bottom: 50px; }
+    #stages .s-subtitle { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    #stages .desktop-color { color: rgba(30,64,175,1); }
+    #stages .s-title { font-size: 36px; font-weight: 800; margin-bottom: 15px; }
+    #stages .description { font-size: 18px; color: #7b8898; font-weight: 500; }
+    #stages .steps-wrapper { display: flex; justify-content: space-between; position: relative; margin-bottom: 50px; }
+    #stages .connecting-line { position: absolute; top: 40px; left: 5%; right: 5%; height: 2px; background-color: #d8e2f3; z-index: 1; }
+    #stages .step-item { flex: 1; position: relative; z-index: 2; padding-right: 30px; }
+    #stages .step-item:last-child { padding-right: 0; }
+    #stages .step-icon-row { display: flex; align-items: center; margin-bottom: 25px; }
+    #stages .step-number { width: 80px; height: 80px; background-color: rgba(30,64,175,1); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; border: 6px solid #ebf0fc; }
+    #stages .step-arrow-desktop { margin-left: auto; width: 32px; height: 32px; background-color: #fff; border: 2px solid #d8e2f3; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #223f8c; font-weight: bold; font-size: 14px; }
+    #stages .step-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; min-height: 48px; }
+    #stages .step-text { font-size: 15px; color: #7b8898; margin-bottom: 20px; min-height: 66px; }
+    #stages .step-badge { display: inline-block; background-color: #ebf0fc; color: #223f8c; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+    #stages .btn-wrapper { text-align: center; }
+    #stages .cta-btn { display: inline-flex; align-items: center; background-color: rgba(0,200,150,1); color: #fff; font-size: 18px; font-weight: 700; padding: 15px 30px; border-radius: 15px; border: none; cursor: pointer; transition: background 0.3s; text-decoration: none; font-family: 'Montserrat', sans-serif; }
+    #stages .cta-btn:hover { background-color: #4eb581; }
+    #stages .btn-icon { padding: 4px 7px; background-color: rgba(255,255,255,0.2); border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; margin-left: 15px; font-size: 16px; }
+    #stages .mobile-only { display: none !important; }
+    #stages .desktop-only { font-size: 20px; }
+
+    @media (max-width: 900px) {
+      #stages .desktop-only { display: none !important; }
+      #stages .mobile-only { display: block !important; }
+      #stages .innovation-section { padding: 40px 15px; }
+      #stages .mobile-color { color: rgba(0,200,150,1); }
+      #stages .s-title { font-size: 28px; }
+      #stages .description { font-size: 16px; margin-bottom: 30px; }
+      #stages .connecting-line { display: none; }
+      #stages .steps-wrapper { flex-direction: column; margin-bottom: 30px; }
+      #stages .step-item { background-color: #fff; border-radius: 16px; padding: 20px; margin-bottom: 15px; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+      #stages .step-icon-row { margin-bottom: 0; margin-right: 20px; }
+      #stages .step-number { width: 60px; height: 60px; background-color: rgba(234,241,255,1); color: rgba(29,111,255,1); border: none; border-radius: 12px; font-size: 24px; }
+      #stages .step-content { flex: 1; }
+      #stages .mobile-pre-title { font-size: 12px; color: #7b8898; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
+      #stages .step-title { font-size: 16px; margin-bottom: 5px; min-height: auto; }
+      #stages .step-text { font-size: 13px; margin-bottom: 0; min-height: auto; }
+      #stages .step-arrow-mobile { color: #c9d2e0; font-size: 18px; margin-left: 15px; }
+      #stages .cta-btn { width: 100%; justify-content: center; font-size: 16px; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 3 — STAGE 1 (section-3.html)
+    ══════════════════════════════════════ */
+    #stage1 {
+      background-color: #f8f9fb;
+      color: #333;
+      line-height: 1.5;
+      padding: 40px 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    #stage1 .container { max-width: 1200px; margin: 0 auto; }
+    #stage1 .header { display: flex; gap: 20px; margin-bottom: 50px; }
+    #stage1 .step-badge { background-color: rgba(30,64,175,1); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; }
+    #stage1 .header-content { display: flex; flex-direction: column; gap: 10px; }
+    #stage1 .step-subtitle { color: rgba(30,64,175,1); font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+    #stage1 .main-title { color: rgba(30,64,175,1); font-size: 36px; font-weight: 800; line-height: 1.2; max-width: 600px; }
+    #stage1 .header-desc { color: #55699b; font-size: 16px; max-width: 550px; margin-top: 5px; }
+    #stage1 .content-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    #stage1 .section-title { color: rgba(30,64,175,1); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 20px; }
+    #stage1 .cards-column { display: flex; flex-direction: column; gap: 16px; }
+    #stage1 .check-card { display: flex; border: 1.5px solid rgba(30,64,175,1); border-radius: 12px; overflow: hidden; background: #fff; min-height: 100px; }
+    #stage1 .check-card-left { background-color: rgba(30,64,175,1); width: 30%; padding: 20px 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; flex-shrink: 0; }
+    #stage1 .card-icon { width: 32px; height: 32px; margin-bottom: 10px; object-fit: contain; }
+    #stage1 .check-card-left h3 { font-size: 15px; font-weight: 600; }
+    #stage1 .check-card-right { padding: 20px 25px; display: flex; align-items: center; color: rgba(30,64,175,1); font-size: 15px; line-height: 1.6; }
+    #stage1 .result-column { display: flex; flex-direction: column; }
+    #stage1 .result-card { background: #fff; border-radius: 12px; padding: 30px; border-top: 3px solid #2ecc71; box-shadow: 0 10px 30px rgba(0,0,0,0.03); color: #4b5563; font-size: 16px; line-height: 1.6; }
+    #stage1 .result-card strong { color: #1f2937; font-weight: 700; }
+    #stage1 .mobile-result-title { display: none; }
+
+    @media (max-width: 768px) {
+      #stage1 { padding: 20px 15px; background-color: #fff; }
+      #stage1 .header { flex-direction: row; align-items: flex-start; margin-bottom: 30px; }
+      #stage1 .step-badge { width: 50px; height: 50px; font-size: 20px; }
+      #stage1 .main-title { font-size: 26px; color: #111; }
+      #stage1 .header-desc { color: #6b7280; font-size: 15px; }
+      #stage1 .content-wrapper { grid-template-columns: 1fr; gap: 30px; }
+      #stage1 .section-title { color: #9ca3af; }
+      #stage1 .desktop-only-title { display: none; }
+      #stage1 .check-card { flex-direction: column; border: 1px solid #f3f4f6; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-radius: 12px; }
+      #stage1 .check-card-left { background-color: transparent; width: 100%; color: #111; flex-direction: row; justify-content: flex-start; padding: 20px 20px 10px 20px; }
+      #stage1 .card-icon { margin-bottom: 0; margin-right: 15px; width: 24px; height: 24px; }
+      #stage1 .check-card-left h3 { font-size: 18px; font-weight: 700; }
+      #stage1 .check-card-right { padding: 0 20px 20px 55px; color: #6b7280; }
+      #stage1 .result-card { background: #ebfbf2; border: 1px solid #c2eed5; box-shadow: none; padding: 25px 20px; }
+      #stage1 .mobile-result-title { display: flex; align-items: center; gap: 10px; color: #10b981; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 4 — STAGE 2 (section-4.html)
+    ══════════════════════════════════════ */
+    #stage2 {
+      --primary-blue: rgba(30,64,175,1);
+      --light-blue: #f4f6f9;
+      --text-dark: #111827;
+      --text-gray: #6b7280;
+      --green: #10b981;
+      --green-light: #ecfdf5;
+      background-color: #f4f6f9;
+      color: rgba(30,64,175,1);
+      line-height: 1.5;
+    }
+    #stage2 .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+    #stage2 .header { margin-bottom: 40px; }
+    #stage2 .step-badge { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+    #stage2 .step-number { width: 48px; height: 48px; background-color: rgba(30,64,175,1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; }
+    #stage2 .step-title { font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    #stage2 .main-heading { font-size: 36px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; }
+    #stage2 .sub-heading { font-size: 18px; color: #5c729e; font-weight: 400; max-width: 600px; }
+    #stage2 .content-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+    #stage2 .column-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+    #stage2 .cards-list { display: flex; flex-direction: column; gap: 15px; }
+    #stage2 .card { background-color: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; display: flex; gap: 20px; align-items: flex-start; }
+    #stage2 .card-icon-wrapper { width: 48px; height: 48px; background-color: #f3f4f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    #stage2 .card-icon-wrapper img { width: 24px; height: 24px; object-fit: contain; }
+    #stage2 .card-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+    #stage2 .card-content p { font-size: 14px; color: #6b7280; font-weight: 400; }
+    #stage2 .desktop-result-title { display: none; }
+    #stage2 .result-card { background-color: #ecfdf5; border: 1px solid #10b981; border-radius: 12px; padding: 25px; }
+    #stage2 .mobile-result-header { display: flex; align-items: center; gap: 10px; color: #10b981; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+    #stage2 .result-text { color: #111827; font-size: 16px; line-height: 1.6; }
+    #stage2 .result-text strong { font-weight: 700; }
+
+    @media (min-width: 992px) {
+      #stage2 .content-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      #stage2 .main-heading { font-size: 42px; }
+      #stage2 .desktop-result-title { display: block; }
+      #stage2 .mobile-result-header { display: none; }
+      #stage2 .result-card { background-color: white; border: 1px solid #e5e7eb; border-top: 3px solid #10b981; padding: 30px; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 5 — STAGE 3 (section-5.html)
+    ══════════════════════════════════════ */
+    #stage3 {
+      --primary-blue: rgba(30,64,175,1);
+      --text-dark: #333333;
+      --text-light: #64748b;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --accent-green: #10b981;
+      --icon-bg: #f1f5f9;
+      background-color: #f8fafc;
+      color: #333;
+      line-height: 1.5;
+      padding: 40px 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    #stage3 .container { max-width: 1100px; margin: 0 auto; }
+    #stage3 .header-section { display: flex; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+    #stage3 .step-badge { flex-shrink: 0; width: 56px; height: 56px; background-color: rgba(30,64,175,1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; }
+    #stage3 .header-content { max-width: 800px; }
+    #stage3 .s3-subtitle { color: rgba(30,64,175,1); font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; display: block; }
+    #stage3 .main-title { color: rgba(30,64,175,1); font-size: 42px; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+    #stage3 .description { color: #64748b; font-size: 18px; }
+    #stage3 .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    #stage3 .column-title { color: rgba(30,64,175,1); font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+    #stage3 .action-cards { display: flex; flex-direction: column; gap: 16px; }
+    #stage3 .card { background-color: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; }
+    #stage3 .icon-box { flex-shrink: 0; width: 48px; height: 48px; background-color: #f1f5f9; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    #stage3 .icon-box img { width: 24px; height: 24px; object-fit: contain; }
+    #stage3 .card-text h4 { color: rgba(30,64,175,1); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    #stage3 .card-text p { color: #64748b; font-size: 15px; }
+    #stage3 .result-card { background-color: #fff; border: 1px solid #e2e8f0; border-top: 4px solid #10b981; border-radius: 12px; padding: 32px 24px; height: fit-content; }
+    #stage3 .result-card p { font-size: 16px; color: #333; }
+    #stage3 .result-mobile-title { display: none; color: #10b981; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; align-items: center; gap: 8px; }
+
+    @media (max-width: 768px) {
+      #stage3 { padding: 20px 16px; }
+      #stage3 .header-section { display: block; }
+      #stage3 .step-badge { display: inline-flex; vertical-align: middle; margin-right: 12px; width: 48px; height: 48px; font-size: 24px; }
+      #stage3 .s3-subtitle { display: inline-block; vertical-align: middle; margin-bottom: 0; }
+      #stage3 .main-title { font-size: 32px; margin-top: 16px; }
+      #stage3 .content-grid { grid-template-columns: 1fr; gap: 32px; }
+      #stage3 .desktop-only-title { display: none; }
+      #stage3 .result-card { background-color: #ecfdf5; border: 1px solid #a7f3d0; border-top: 1px solid #a7f3d0; border-radius: 16px; padding: 24px; }
+      #stage3 .result-mobile-title { display: flex; }
+      #stage3 .icon-box { background-color: white; }
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER — BANNER (footer.html)
+    ══════════════════════════════════════ */
+    #footer-banner {
+      width: 100%;
+    }
+    #footer-banner .banner-container {
+      width: 100%;
+      max-width: 100%;
+      background-color: #27399c;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+    #footer-banner .banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 50px 60px;
+      color: #fff;
+    }
+    #footer-banner .content { max-width: 55%; }
+    #footer-banner h1 { font-size: 38px; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+    #footer-banner p.desc { font-size: 16px; color: #c9d2f2; margin-bottom: 25px; line-height: 1.5; }
+    #footer-banner p.note { font-size: 13px; color: #94a3df; line-height: 1.4; }
+    #footer-banner .action-wrapper { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; }
+    #footer-banner .btn { display: inline-block; padding: 16px 35px; border: 2px solid #37a87a; border-radius: 8px; background-color: transparent; color: #37a87a; font-size: 18px; font-weight: 600; text-decoration: none; text-align: center; cursor: pointer; transition: background-color 0.3s; font-family: 'Montserrat', sans-serif; }
+    #footer-banner .btn:hover { background-color: rgba(55,168,122,0.1); }
+    #footer-banner .mobile-only { display: none; }
+    #footer-banner .desktop-only-f { display: block; }
+
+    @media (max-width: 768px) {
+      #footer-banner .banner { flex-direction: column; text-align: center; padding: 40px 20px; }
+      #footer-banner .content { max-width: 100%; margin-bottom: 30px; }
+      #footer-banner h1 { font-size: 32px; }
+      #footer-banner .action-wrapper { width: 100%; align-items: center; }
+      #footer-banner .btn { width: 100%; padding: 18px; font-size: 18px; }
+      #footer-banner .desktop-only-f { display: none; }
+      #footer-banner .mobile-only { display: block; margin-top: 25px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <div class="container">
+      <div class="content-side">
+        <div class="heading-block">
+          <h1>
+            ПОЛУЧИ ДО
+            <span class="highlight">10 МЛРД <span class="white-span">РУБ.</span></span>
+          </h1>
+          <div class="subtitle">НА ИННОВАЦИЮ В РФ</div>
+        </div>
+
+        <div class="mobile-hero">
+          <div class="mobile-person-col">
+            <img src="images/Баланов_ПМЭФ-no-bg-preview (carve.photos) 1.svg" alt="Spiker rasmi" />
+          </div>
+          <div class="mobile-card-col">
+            <div class="tag-pmef">ПМЭФ</div>
+            <div class="card-text">
+              <strong>Баланов А.Н.</strong><br />
+              Советник РАЕН · Профессор<br />
+              Разработал ГосУслуги, Сбер, ВК, VTB
+            </div>
+          </div>
+        </div>
+
+        <img src="images/Group 266.svg" alt="Hamkor logotiplari 1" class="logos-placeholder" />
+        <div class="divider">или</div>
+
+        <h2>ДО 100 МЛН РУБ.</h2>
+        <div class="investor-info">
+          <span class="investor-text">ОТ ЧАСТНЫХ ИНВЕСТОРОВ</span>
+          <button class="badge-btn">+ СТАТЬ ИНВЕСТОРОМ</button>
+        </div>
+
+        <img src="images/Group 265.svg" alt="Hamkor logotiplari 2" class="logos-placeholder" />
+
+        <div class="action-buttons">
+          <button class="btn btn-primary" onclick="launchInnovation()">
+            Запустить мою инновацию <span class="btn-primary-span">&rarr;</span>
+          </button>
+          <button class="btn btn-secondary" onclick="learnMore()">
+            Узнать подробнее
+          </button>
+        </div>
+      </div>
+
+      <div class="image-side">
+        <img src="images/Баланов_ПМЭФ-no-bg-preview (carve.photos) 1.svg" alt="Spiker rasmi" class="main-person-img" />
+        <div class="info-card">
+          <div class="tag-pmef">ПМЭФ</div>
+          <div class="card-text">
+            <strong>Баланов А.Н.</strong> · Советник РАЕН · Профессор · Разработал ГосУслуги, Сбер, ВК, VTB
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICES ══ -->
+  <section id="services">
+    <div class="container">
+      <div class="section-tag">Наши услуги</div>
+      <h1 class="main-title">Проведём инновацию до государственного заказчика</h1>
+      <p class="subtitle">Полный цикл поддержки — от идеи до контракта</p>
+
+      <div class="services-grid">
+        <div class="card">
+          <div class="card-top">
+            <picture>
+              <source media="(min-width: 769px)" srcset="images/fs-pk1.svg">
+              <img src="images/fs-mb1.png" alt="icon" class="card-icon">
+            </picture>
+            <div class="card-title">Кураторство и улучшение инновации</div>
+          </div>
+          <div class="card-footer">Бесплатно</div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <picture>
+              <source media="(min-width: 769px)" srcset="images/fs-pk2.svg">
+              <img src="images/fs-mb2.png" alt="icon" class="card-icon">
+            </picture>
+            <div class="card-title">Сопровождение до гос. заказчика</div>
+          </div>
+          <div class="card-footer">Бесплатно</div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <picture>
+              <source media="(min-width: 769px)" srcset="images/fs-pk3.svg">
+              <img src="images/fs-mb3.png" alt="icon" class="card-icon">
+            </picture>
+            <div class="card-title">Государственная поддержка</div>
+          </div>
+          <div class="card-footer">Бесплатно</div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <picture>
+              <source media="(min-width: 769px)" srcset="images/fs-pk4.svg">
+              <img src="images/fs-mb4.png" alt="icon" class="card-icon">
+            </picture>
+            <div class="card-title">Финансовая поддержка экосистем</div>
+          </div>
+          <div class="card-footer">
+            <span style="color: rgba(30,64,175,1); font-weight: 800;">От</span>
+            <img src="images/social-icons.svg" alt="logos" class="partner-logos">
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/star.svg" alt="star" class="card-star">
+          <div class="card-top">
+            <picture>
+              <source media="(min-width: 769px)" srcset="images/fs-pk5.svg">
+              <img src="images/fs-mb5.png" alt="icon" class="card-icon">
+            </picture>
+            <div class="card-title">Получение гранта через государственные фонды</div>
+          </div>
+          <div class="card-footer">
+            <span style="color: #64748b; font-weight: normal; font-size: 13px;">до</span>
+            <span class="price-text">10 млрд ₽</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="curator-section">
+        <div class="section-tag">Ваш куратор</div>
+        <div class="curator-card">
+          <picture>
+            <source media="(min-width: 769px)" srcset="desktop-avatar.png">
+            <img src="images/fs-mb-6.png" alt="Curator" class="curator-avatar">
+          </picture>
+          <div class="curator-info">
+            <div class="curator-name">Санников Антон Евгеньевич</div>
+            <div class="curator-role">Помощник советника Баланова А.Н.</div>
+            <div class="curator-role" style="color: #94a3b8;">8 лет коммерческого опыта по стартапам</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STAGES OVERVIEW ══ -->
+  <section id="stages">
+    <div class="innovation-section">
+      <div class="section-header">
+        <p class="s-subtitle desktop-color desktop-only">Как это работает</p>
+        <p class="s-subtitle mobile-color mobile-only">Как это работает</p>
+        <h2 class="s-title">3 этапа Вашей инновации</h2>
+        <p class="description">Без кражи идей и скрытых условий — только прозрачный путь к результату</p>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="connecting-line"></div>
+
+        <div class="step-item">
+          <div class="step-icon-row">
+            <div class="step-number">1</div>
+            <div class="step-arrow-desktop desktop-only">&gt;</div>
+          </div>
+          <div class="step-content">
+            <div class="mobile-pre-title mobile-only">Базовый отбор</div>
+            <h3 class="step-title">Отбор инноваций под задачи государства</h3>
+            <p class="step-text">Оцениваем Ваш вклад в развитие страны и зрелость инновации.</p>
+            <div class="step-badge desktop-only">Подбор под задачи</div>
+          </div>
+          <div class="step-arrow-mobile mobile-only">&gt;</div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-icon-row">
+            <div class="step-number">2</div>
+            <div class="step-arrow-desktop desktop-only">&gt;</div>
+          </div>
+          <div class="step-content">
+            <div class="mobile-pre-title mobile-only">Адаптация</div>
+            <h3 class="step-title">Улучшаем привлекательность Вашей инновации</h3>
+            <p class="step-text">Доводим проект до научно-экономической обоснованности и технологической завершённости.</p>
+            <div class="step-badge desktop-only">Доработка и упаковка</div>
+          </div>
+          <div class="step-arrow-mobile mobile-only">&gt;</div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-icon-row">
+            <div class="step-number">3</div>
+          </div>
+          <div class="step-content">
+            <div class="mobile-pre-title mobile-only">Интеграция</div>
+            <h3 class="step-title">Интеграция и запуск в ведомствах РФ</h3>
+            <p class="step-text">Ищем под Вас государственного заказчика или ведомство с выкупом пилотного проекта.</p>
+            <div class="step-badge desktop-only">Выход на заказчика</div>
+          </div>
+          <div class="step-arrow-mobile mobile-only">&gt;</div>
+        </div>
+      </div>
+
+      <div class="btn-wrapper">
+        <button class="cta-btn">
+          Запустить мою инновацию
+          <span class="btn-icon">&rarr;</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STAGE 1 ══ -->
+  <section id="stage1">
+    <div class="container">
+      <div class="header">
+        <div class="step-badge">1</div>
+        <div class="header-content">
+          <div class="step-subtitle">ЭТАП 1 • БАЗОВЫЙ ОТБОР</div>
+          <h1 class="main-title">Отбор инноваций под задачи государства</h1>
+          <p class="header-desc">Это первый шаг, чтобы убедиться, что Ваш проект и команда готовы работать с государственным сектором.</p>
+        </div>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="cards-column">
+          <h2 class="section-title">ЧТО МЫ ПРОВЕРЯЕМ:</h2>
+          <div class="check-card">
+            <div class="check-card-left">
+              <img src="images/ts-1.png" alt="История" class="card-icon">
+              <h3>История</h3>
+            </div>
+            <div class="check-card-right">Мы убеждаемся, что у проекта и основателей нет критических ограничений для работы с крупными структурами.</div>
+          </div>
+          <div class="check-card">
+            <div class="check-card-left">
+              <img src="images/ts-2.png" alt="Влияние" class="card-icon">
+              <h3>Влияние на цели государства</h3>
+            </div>
+            <div class="check-card-right">Попадает ли ваш проект в актуальные задачи ведомств? Мы оцениваем, насколько ваша инновация полезна для страны здесь и сейчас.</div>
+          </div>
+          <div class="check-card">
+            <div class="check-card-left">
+              <img src="images/ts-3.png" alt="Основатели" class="card-icon">
+              <h3>Основатели</h3>
+            </div>
+            <div class="check-card-right">Готовы ли вы к диалогу? Мы ищем взрослых, системных партнёров, которые понимают специфику рынка.</div>
+          </div>
+          <div class="check-card">
+            <div class="check-card-left">
+              <img src="images/ts-4.png" alt="Баланс" class="card-icon">
+              <h3>Баланс «Риск / Польза»</h3>
+            </div>
+            <div class="check-card-right">Насколько велики риски внедрения вашего решения по сравнению с той пользой, которую оно принесёт?</div>
+          </div>
+        </div>
+
+        <div class="result-column">
+          <h2 class="section-title desktop-only-title">РЕЗУЛЬТАТ ЭТАПА:</h2>
+          <div class="result-card">
+            <div class="mobile-result-title">✅ РЕЗУЛЬТАТ ЭТАПА</div>
+            Ваш проект получает одобрение для дальнейшей глубокой проработки, либо мы честно говорим, что сейчас не время и даём обратную связь. <strong>Ваша идея остаётся с Вами, как и реализация.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STAGE 2 ══ -->
+  <section id="stage2">
+    <div class="container">
+      <header class="header">
+        <div class="step-badge">
+          <div class="step-number">2</div>
+          <div class="step-title">ЭТАП 2 • АДАПТАЦИЯ</div>
+        </div>
+        <h1 class="main-heading">Адаптация для<br />государственных заказчиков</h1>
+        <p class="sub-heading">Мы помогаем инновации «упаковаться» так, чтобы быть понятной и желанной для государства.</p>
+      </header>
+
+      <div class="content-grid">
+        <div class="tasks-column">
+          <h3 class="column-title">ЧТО МЫ ДЕЛАЕМ:</h3>
+          <div class="cards-list">
+            <div class="card">
+              <div class="card-icon-wrapper"><img src="images/fts-1.png" alt="Microscope Icon" /></div>
+              <div class="card-content">
+                <h4>Научная обоснованность</h4>
+                <p>Подтверждаем, что ваше решение имеет право на существование с точки зрения науки и технологий или помогаем это доработать.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-icon-wrapper"><img src="images/fts-2.png" alt="Tech Icon" /></div>
+              <div class="card-content">
+                <h4>Технологическая завершённость</h4>
+                <p>Доводим продукт до стадии, когда это не просто идея, а готовое решение, которое можно показать (MVP/Pilot ready).</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-icon-wrapper"><img src="images/fts3.png" alt="Graph Icon" /></div>
+              <div class="card-content">
+                <h4>Экономическая обоснованность</h4>
+                <p>Помогаем считать цифры, окупаемость, бюджет внедрения, экономический эффект для ведомства. Проект должен быть выгодным.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-icon-wrapper"><img src="images/fts-4.png" alt="Lightning Icon" /></div>
+              <div class="card-content">
+                <h4>Скорость и простота интеграции</h4>
+                <p>Оцениваем, как быстро и безболезненно ваш продукт можно интегрировать в текущие процессы государственных органов.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-column">
+          <h3 class="column-title desktop-result-title">РЕЗУЛЬТАТ ЭТАПА:</h3>
+          <div class="result-card">
+            <div class="mobile-result-header">✅ РЕЗУЛЬТАТ ЭТАПА</div>
+            <p class="result-text">Ваша инновация превращается в <strong>структурированный, обоснованный и безопасный для внедрения</strong> актив.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STAGE 3 ══ -->
+  <section id="stage3">
+    <div class="container">
+      <div class="header-section">
+        <div style="line-height: 50px;">
+          <div class="step-badge">3</div>
+          <span class="s3-subtitle">Этап 3 · Интеграция</span>
+        </div>
+        <div class="header-content">
+          <h1 class="main-title">Интеграция и запуск</h1>
+          <p class="description">Самый волнительный этап. Ищем вашему проекту «дом» в государственной структуре и доводим до работающего пилота.</p>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="actions-column">
+          <h3 class="column-title">Как мы действуем:</h3>
+          <div class="action-cards">
+            <div class="card">
+              <div class="icon-box"><img src="images/ffs-1.png" alt="Поиск"></div>
+              <div class="card-text">
+                <h4>Поиск заказчика</h4>
+                <p>Ищем ведомство или структуру, которой здесь и сейчас нужен ваш продукт.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="icon-box"><img src="images/ffs-2.png" alt="Мэтчинг"></div>
+              <div class="card-text">
+                <h4>Мэтчинг (Сопоставление данных)</h4>
+                <p>Показываем проект заказчику, переходим к интеграции либо предлагаем альтернативные пути развития.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="icon-box"><img src="images/ffs-3.png" alt="Запуск"></div>
+              <div class="card-text">
+                <h4>Сопровождение при запуске</h4>
+                <p>Если нас выбрали — не бросаем: помогаем с документами, сопровождаем в переговорах, подключаем инвесторов под пилот и помогаем масштабироваться.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-column">
+          <h3 class="column-title desktop-only-title">Результат этапа:</h3>
+          <div class="result-card">
+            <h3 class="result-mobile-title">✅ Результат этапа</h3>
+            <p>Ваш продукт запущен в пилот у государственного заказчика. <strong>Сопровождаем Вас на каждом шаге — от первой встречи до контракта и масштабирования.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER BANNER ══ -->
+  <div id="footer-banner">
+    <div class="banner-container">
+      <div class="banner">
+        <div class="content">
+          <h1>Запустить мою инновацию</h1>
+          <p class="desc">Без кражи идей и скрытых условий — только прозрачный путь к результату. Подайте заявку и наша команда свяжется с Вами в течение 24 часов.</p>
+          <p class="note desktop-only-f">Ваша идея остаётся с Вами. Полная конфиденциальность на всех этапах.</p>
+        </div>
+        <div class="action-wrapper">
+          <a href="#" class="btn">Запустить мою инновацию</a>
+          <p class="note mobile-only">Ваша идея остаётся с Вами. Полная конфиденциальность на всах этапах.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function launchInnovation() {
+      alert("Innovatsiyani ishga tushirish tugmasi bosildi!");
+    }
+    function learnMore() {
+      console.log("Batafsil ma'lumot olish so'raldi.");
+    }
+  </script>
+</body>
+</html>
