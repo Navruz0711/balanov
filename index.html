@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Investitsiya va Innovatsiya</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+     <link rel="icon" type="image/svg+xml" href="./images/logoo.png" />
   <style>
     /* ══════════════════════════════════════
        GLOBAL RESET
@@ -389,6 +390,397 @@
       #footer-banner .desktop-only-f { display: none; }
       #footer-banner .mobile-only { display: block; margin-top: 25px; text-align: center; }
     }
+
+    /* ══════════════════════════════════════
+       POPUP OVERLAY (shared)
+    ══════════════════════════════════════ */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .popup-overlay.active { display: flex; }
+
+    /* Mobile: popup slides up from bottom */
+    @media (max-width: 768px) {
+      .popup-overlay { align-items: flex-end; padding: 0; }
+    }
+
+    /* ══════════════════════════════════════
+       POPUP 1 — НАШИ ПРОЕКТЫ
+    ══════════════════════════════════════ */
+    #popup1 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    #popup1 .p1-box {
+      width: 100%;
+      max-width: 900px;
+      background-color: #172459;
+      color: #fff;
+      border-radius: 24px;
+      padding: 60px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    #popup1 .p1-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.2s;
+    }
+    #popup1 .p1-close:hover { background: rgba(255,255,255,0.2); }
+    #popup1 .p1-badge {
+      display: inline-block;
+      background-color: #fff;
+      color: #172459;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 20px;
+      border-radius: 30px;
+      margin-bottom: 30px;
+    }
+    #popup1 .p1-title {
+      font-size: 54px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    #popup1 .p1-subtitle {
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 400;
+      color: #b0b8d6;
+      margin-bottom: 40px;
+      max-width: 650px;
+      line-height: 1.5;
+    }
+    #popup1 .p1-btn {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(90deg, #2dc475 0%, #1eab62 100%);
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 12px 12px 12px 30px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(45, 196, 117, 0.2);
+      font-family: 'Montserrat', sans-serif;
+    }
+    #popup1 .p1-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(45, 196, 117, 0.3);
+    }
+    #popup1 .p1-btn-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255,255,255,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      margin-left: 20px;
+      font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+      #popup1 .p1-box {
+        border-radius: 24px 24px 0 0;
+        padding: 40px 25px;
+        max-width: 100%;
+        background-color: #1c2b66;
+        border: 1px solid rgba(255,255,255,0.05);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      }
+      #popup1 .p1-badge {
+        background-color: #101944;
+        color: #fff;
+        font-size: 12px;
+        padding: 6px 16px;
+        margin-bottom: 25px;
+      }
+      #popup1 .p1-title { font-size: 32px; }
+      #popup1 .p1-subtitle { font-size: 18px; margin-bottom: 35px; }
+      #popup1 .p1-btn {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 18px;
+        padding: 10px 10px 10px 25px;
+      }
+    }
+
+    /* ══════════════════════════════════════
+       POPUP 2 — ПРОЕКТЫ С НАМИ
+    ══════════════════════════════════════ */
+    #popup2 {
+      font-family: 'Inter', sans-serif;
+    }
+    #popup2 .p2-modal {
+      --bg-color: #f8fafc;
+      --modal-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border-color: #e2e8f0;
+      --btn-blue: #233890;
+      --btn-hover: #1e307a;
+      --box-bg: #f3f6fc;
+      --badge-green-bg: #dcfce7;
+      --badge-green-text: #16a34a;
+      --badge-blue-bg: #e0e7ff;
+      --badge-blue-text: #4f46e5;
+      --badge-yellow-bg: #fef3c7;
+      --badge-yellow-text: #d97706;
+      --badge-gray-bg: #f1f5f9;
+      --badge-gray-text: #475569;
+      --tag-gold-bg: #fef08a;
+      --tag-gold-text: #854d0e;
+      --tag-blue-bg: #e0f2fe;
+      --tag-blue-text: #0369a1;
+      --tag-pink-bg: #fce7f3;
+      --tag-pink-text: #be185d;
+
+      background-color: var(--modal-bg);
+      width: 100%;
+      max-width: 850px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 30px 40px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    #popup2 .p2-drag-handle {
+      display: none;
+      width: 40px;
+      height: 4px;
+      background-color: #cbd5e1;
+      border-radius: 2px;
+      margin: 0 auto 20px auto;
+    }
+    #popup2 .p2-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+    #popup2 .p2-header-titles h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+    #popup2 .p2-header-titles p {
+      font-size: 14px;
+      color: #64748b;
+    }
+    #popup2 .p2-close {
+      background: none;
+      border: 1px solid #e2e8f0;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: #64748b;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    #popup2 .p2-close:hover { background: #f1f5f9; }
+
+    /* Project cards inside popup2 */
+    #popup2 .p2-project-card {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 25px 0;
+    }
+    #popup2 .p2-project-card:last-child { border-bottom: none; padding-bottom: 0; }
+    #popup2 .p2-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    #popup2 .p2-card-title { font-size: 18px; font-weight: 700; color: #0f172a; }
+    #popup2 .p2-badge {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #popup2 .p2-badge::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+    #popup2 .p2-badge-green { background-color: #dcfce7; color: #16a34a; }
+    #popup2 .p2-badge-green::before { background-color: #16a34a; }
+    #popup2 .p2-badge-blue { background-color: #e0e7ff; color: #4f46e5; }
+    #popup2 .p2-badge-blue::before { background-color: #4f46e5; }
+    #popup2 .p2-badge-yellow { background-color: #fef3c7; color: #d97706; }
+    #popup2 .p2-badge-yellow::before { background-color: #d97706; }
+    #popup2 .p2-badge-gray { background-color: #f1f5f9; color: #475569; }
+    #popup2 .p2-badge-gray::before { background-color: #475569; }
+
+    #popup2 .p2-card-subtitle {
+      font-size: 14px;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    #popup2 .p2-ministry-logo { width: 16px; height: 16px; object-fit: contain; }
+    #popup2 .p2-ministry-name { font-weight: 600; color: #233890; }
+    #popup2 .p2-tags { display: flex; gap: 10px; margin-bottom: 20px; }
+    #popup2 .p2-tag {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    #popup2 .p2-tag-gold { background-color: #fef08a; color: #854d0e; }
+    #popup2 .p2-tag-blue { background-color: #e0f2fe; color: #0369a1; }
+    #popup2 .p2-tag-pink { background-color: #fce7f3; color: #be185d; }
+
+    #popup2 .p2-progress-wrapper { margin-bottom: 25px; }
+    #popup2 .p2-progress-track {
+      height: 6px;
+      background-color: #e2e8f0;
+      border-radius: 3px;
+      position: relative;
+      margin-bottom: 15px;
+    }
+    #popup2 .p2-progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #233890 0%, #10b981 100%);
+      position: absolute;
+      left: 0; top: 0;
+    }
+    #popup2 .p2-progress-fill.blue-only {
+      background: linear-gradient(90deg, #233890 0%, #3b82f6 100%);
+    }
+    #popup2 .p2-progress-thumb {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    #popup2 .p2-thumb-circle { width: 16px; height: 16px; border: 3px solid #233890; }
+    #popup2 .p2-thumb-star { width: 24px; height: 24px; background: none; display: flex; justify-content: center; align-items: center; }
+    #popup2 .p2-thumb-star img { width: 100%; height: 100%; }
+    #popup2 .p2-progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    #popup2 .p2-progress-labels span { flex: 1; text-align: center; }
+    #popup2 .p2-progress-labels span:first-child { text-align: left; }
+    #popup2 .p2-progress-labels span:last-child { text-align: right; }
+    #popup2 .p2-progress-labels span.active { color: #233890; font-weight: 700; }
+
+    #popup2 .p2-mobile-text { display: none; }
+
+    #popup2 .p2-card-footer {
+      background-color: #f3f6fc;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #popup2 .p2-stats-grid { display: flex; gap: 40px; }
+    #popup2 .p2-stat-item { display: flex; flex-direction: column; gap: 4px; }
+    #popup2 .p2-stat-label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    #popup2 .p2-stat-value { font-size: 16px; font-weight: 700; color: #0f172a; }
+    #popup2 .p2-stat-value.green { color: #10b981; }
+
+    #popup2 .p2-btn-download {
+      background-color: #233890;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    #popup2 .p2-btn-download:hover { background-color: #1e307a; }
+    #popup2 .p2-btn-download img { width: 16px; height: 16px; }
+
+    #popup2 .p2-mobile-ready-box {
+      display: none;
+      background-color: #f3f6fc;
+      border-radius: 12px;
+      padding: 16px 20px;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #e0e7ff;
+    }
+    #popup2 .p2-mobile-ready-text { font-size: 14px; font-weight: 600; color: #0f172a; }
+
+    @media (max-width: 768px) {
+      #popup2 .p2-modal {
+        border-radius: 24px 24px 0 0;
+        padding: 20px 20px 30px 20px;
+        max-width: 100%;
+        max-height: 90vh;
+      }
+      #popup2 .p2-drag-handle { display: block; }
+      #popup2 .p2-header-titles h2 { font-size: 20px; }
+      #popup2 .p2-card-title { font-size: 16px; }
+      #popup2 .p2-tags { display: none; }
+      #popup2 .p2-desktop-text { display: none; }
+      #popup2 .p2-mobile-text { display: inline; }
+      #popup2 .p2-progress-labels { font-size: 11px; }
+      #popup2 .p2-card-footer { display: none !important; }
+      #popup2 .p2-mobile-ready-box { display: flex; }
+      #popup2 .p2-btn-download { padding: 10px 16px; }
+    }
   </style>
 </head>
 <body>
@@ -431,7 +823,7 @@
         <img src="images/Group 265.svg" alt="Hamkor logotiplari 2" class="logos-placeholder" />
 
         <div class="action-buttons">
-          <button class="btn btn-primary" onclick="launchInnovation()">
+          <button class="btn btn-primary" id="heroLaunchBtn">
             Запустить мою инновацию <span class="btn-primary-span">&rarr;</span>
           </button>
           <button class="btn btn-secondary" onclick="learnMore()">
@@ -596,7 +988,7 @@
       </div>
 
       <div class="btn-wrapper">
-        <button class="cta-btn">
+        <button class="cta-btn" id="stagesLaunchBtn">
           Запустить мою инновацию
           <span class="btn-icon">&rarr;</span>
         </button>
@@ -781,17 +1173,273 @@
           <p class="note desktop-only-f">Ваша идея остаётся с Вами. Полная конфиденциальность на всех этапах.</p>
         </div>
         <div class="action-wrapper">
-          <a href="#" class="btn">Запустить мою инновацию</a>
+          <a href="#" class="btn" id="openPopup1Btn">Запустить мою инновацию</a>
           <p class="note mobile-only">Ваша идея остаётся с Вами. Полная конфиденциальность на всах этапах.</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- ══ POPUP 1 — НАШИ ПРОЕКТЫ ══ -->
+  <div class="popup-overlay" id="popup1">
+    <div class="p1-box">
+      <button class="p1-close" id="closePopup1">✕</button>
+      <div class="p1-badge">Наши проекты</div>
+      <h1 class="p1-title">Проекты уже с нами</h1>
+      <p class="p1-subtitle">Реальные стартапы, которые проходят нашу систему прямо сейчас.</p>
+      <button class="p1-btn" id="openPopup2Btn">
+        Смотреть проекты
+        <span class="p1-btn-icon">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ POPUP 2 — ПРОЕКТЫ С НАМИ ══ -->
+  <div class="popup-overlay" id="popup2">
+    <div class="p2-modal">
+      <div class="p2-drag-handle"></div>
+
+      <div class="p2-header">
+        <div class="p2-header-titles">
+          <h2>Проекты с нами</h2>
+          <p>На входе → на выходе: путь каждого стартапа</p>
+        </div>
+        <button class="p2-close" id="closePopup2">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="p2-projects-list">
+
+        <!-- Card 1 -->
+        <div class="p2-project-card">
+          <div class="p2-card-header">
+            <div class="p2-card-title">ЭкоМонитор</div>
+            <div class="p2-badge p2-badge-green">Пилот</div>
+          </div>
+          <div class="p2-card-subtitle">
+            Экологический контроль ·
+            <img src="images/popup-1.svg" alt="Лого" class="p2-ministry-logo">
+            <span class="p2-ministry-name">Минприроды РФ</span>
+          </div>
+          <div class="p2-tags">
+            <div class="p2-tag p2-tag-gold">★ Лидер проектов</div>
+            <div class="p2-tag p2-tag-blue">⏰ 312 дней</div>
+          </div>
+          <div class="p2-progress-wrapper">
+            <div class="p2-progress-track">
+              <div class="p2-progress-fill" style="width:100%;"></div>
+              <div class="p2-progress-thumb p2-thumb-star" style="left:100%;"><img src="images/popup-star.svg" alt="Star"></div>
+            </div>
+            <div class="p2-progress-labels">
+              <span>Идея</span><span>Анализ</span>
+              <span class="p2-desktop-text">Обоснование</span><span class="p2-mobile-text">Обосн.</span>
+              <span class="p2-desktop-text">Прототип</span><span class="p2-mobile-text">Прото.</span>
+              <span class="active">Пилот</span>
+            </div>
+          </div>
+          <div class="p2-card-footer p2-desktop-stats">
+            <div class="p2-stats-grid">
+              <div class="p2-stat-item"><span class="p2-stat-label">Инвестиции</span><span class="p2-stat-value">₽18.4 млн</span></div>
+              <div class="p2-stat-item"><span class="p2-stat-label">ROI</span><span class="p2-stat-value green">+240%</span></div>
+              <div class="p2-stat-item"><span class="p2-stat-label">Окупаемость</span><span class="p2-stat-value">2.1 года</span></div>
+            </div>
+            <button class="p2-btn-download"><img src="images/skachat.svg" alt="Download"> Скачать полный кейс</button>
+          </div>
+          <div class="p2-mobile-ready-box">
+            <span class="p2-mobile-ready-text">Все стадии пройдены — кейс готов</span>
+            <button class="p2-btn-download"><img src="images/skachat.svg" alt="Download"> Скачать</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p2-project-card">
+          <div class="p2-card-header">
+            <div class="p2-card-title">МедАИ Диагностика</div>
+            <div class="p2-badge p2-badge-blue">Грант получен</div>
+          </div>
+          <div class="p2-card-subtitle">
+            Здравоохранение ·
+            <img src="images/popup-2.svg" alt="Лого" class="p2-ministry-logo">
+            <span class="p2-ministry-name">Минздрав РФ</span>
+          </div>
+          <div class="p2-tags">
+            <div class="p2-tag p2-tag-blue">⏰ 198 дней</div>
+          </div>
+          <div class="p2-progress-wrapper">
+            <div class="p2-progress-track">
+              <div class="p2-progress-fill blue-only" style="width:75%;"></div>
+              <div class="p2-progress-thumb p2-thumb-circle" style="left:75%;"></div>
+            </div>
+            <div class="p2-progress-labels">
+              <span>Идея</span><span>Анализ</span>
+              <span class="p2-desktop-text">Обоснование</span><span class="p2-mobile-text">Обосн.</span>
+              <span class="active p2-desktop-text">Прототип</span><span class="active p2-mobile-text">Прото.</span>
+              <span>Пилот</span>
+            </div>
+          </div>
+          <div class="p2-card-footer p2-desktop-stats">
+            <div class="p2-stats-grid">
+              <div class="p2-stat-item"><span class="p2-stat-label">Инвестиции</span><span class="p2-stat-value">₽32.0 млн</span></div>
+              <div class="p2-stat-item"><span class="p2-stat-label">ROI</span><span class="p2-stat-value green">+185%</span></div>
+              <div class="p2-stat-item"><span class="p2-stat-label">Окупаемость</span><span class="p2-stat-value">3.4 года</span></div>
+            </div>
+            <button class="p2-btn-download"><img src="images/skachat.svg" alt="Download"> Скачать полный кейс</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p2-project-card">
+          <div class="p2-card-header">
+            <div class="p2-card-title">СтройТех Платформа</div>
+            <div class="p2-badge p2-badge-yellow">Прототип</div>
+          </div>
+          <div class="p2-card-subtitle">
+            Строительство ·
+            <img src="images/popup-3.svg" alt="Лого" class="p2-ministry-logo">
+            <span class="p2-ministry-name">Минстрой РФ</span>
+          </div>
+          <div class="p2-tags">
+            <div class="p2-tag p2-tag-blue">⏰ 143 дня</div>
+          </div>
+          <div class="p2-progress-wrapper">
+            <div class="p2-progress-track">
+              <div class="p2-progress-fill blue-only" style="width:50%;"></div>
+              <div class="p2-progress-thumb p2-thumb-circle" style="left:50%;"></div>
+            </div>
+            <div class="p2-progress-labels">
+              <span>Идея</span><span>Анализ</span>
+              <span class="active p2-desktop-text">Обоснование</span><span class="active p2-mobile-text">Обосн.</span>
+              <span class="p2-desktop-text">Прототип</span><span class="p2-mobile-text">Прото.</span>
+              <span>Пилот</span>
+            </div>
+          </div>
+          <div class="p2-card-footer p2-desktop-stats">
+            <div class="p2-stats-grid">
+              <div class="p2-stat-item"><span class="p2-stat-label">Инвестиции</span><span class="p2-stat-value">₽9.7 млн</span></div>
+              <div class="p2-stat-item"><span class="p2-stat-label">ROI</span><span class="p2-stat-value green">+130%</span></div>
+              <div class="p2-stat-item"><span class="p2-stat-label">Окупаемость</span><span class="p2-stat-value">4.0 года</span></div>
+            </div>
+            <button class="p2-btn-download"><img src="images/skachat.svg" alt="Download"> Скачать полный кейс</button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="p2-project-card">
+          <div class="p2-card-header">
+            <div class="p2-card-title">АгроДата Аналитика</div>
+            <div class="p2-badge p2-badge-gray">Анализ</div>
+          </div>
+          <div class="p2-card-subtitle">
+            Сельское хозяйство ·
+            <img src="images/popup-4.svg" alt="Лого" class="p2-ministry-logo">
+            <span class="p2-ministry-name">Минсельхоз РФ</span>
+          </div>
+          <div class="p2-tags">
+            <div class="p2-tag p2-tag-pink">✦ Лучшая идея</div>
+            <div class="p2-tag p2-tag-blue">⏰ 67 дней</div>
+          </div>
+          <div class="p2-progress-wrapper">
+            <div class="p2-progress-track">
+              <div class="p2-progress-fill blue-only" style="width:25%;"></div>
+              <div class="p2-progress-thumb p2-thumb-circle" style="left:25%;"></div>
+            </div>
+            <div class="p2-progress-labels">
+              <span>Идея</span><span class="active">Анализ</span>
+              <span class="p2-desktop-text">Обоснование</span><span class="p2-mobile-text">Обосн.</span>
+              <span class="p2-desktop-text">Прототип</span><span class="p2-mobile-text">Прото.</span>
+              <span>Пилот</span>
+            </div>
+          </div>
+          <div class="p2-card-footer p2-desktop-stats">
+            <div class="p2-stats-grid">
+              <div class="p2-stat-item"><span class="p2-stat-label">Инвестиции</span><span class="p2-stat-value">₽6.2 млн</span></div>
+              <div class="p2-stat-item"><span class="p2-stat-label">ROI</span><span class="p2-stat-value green">+93%</span></div>
+              <div class="p2-stat-item"><span class="p2-stat-label">Окупаемость</span><span class="p2-stat-value">5.2 года</span></div>
+            </div>
+            <button class="p2-btn-download"><img src="images/skachat.svg" alt="Download"> Скачать полный кейс</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script>
-    function launchInnovation() {
-      alert("Innovatsiyani ishga tushirish tugmasi bosildi!");
+    // ── Popup logic ──
+    const overlay1 = document.getElementById('popup1');
+    const overlay2 = document.getElementById('popup2');
+
+    function openPopup1(e) {
+      if (e) e.preventDefault();
+      overlay1.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
+
+    // All "Запустить мою инновацию" buttons
+    ['openPopup1Btn', 'heroLaunchBtn', 'stagesLaunchBtn'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', openPopup1);
+    });
+
+    // Close Popup 1
+    document.getElementById('closePopup1').addEventListener('click', function() {
+      overlay1.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // Close Popup 1 on overlay click
+    overlay1.addEventListener('click', function(e) {
+      if (e.target === overlay1) {
+        overlay1.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Open Popup 2 from Popup 1's button
+    document.getElementById('openPopup2Btn').addEventListener('click', function() {
+      overlay1.classList.remove('active');
+      overlay2.classList.add('active');
+    });
+
+    // Close Popup 2
+    document.getElementById('closePopup2').addEventListener('click', function() {
+      overlay2.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // Close Popup 2 on overlay click
+    overlay2.addEventListener('click', function(e) {
+      if (e.target === overlay2) {
+        overlay2.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close popups on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        overlay1.classList.remove('active');
+        overlay2.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Download button logic for Popup 2
+    const EXCEL_FILE_URL = 'Разработка_Баланов.xlsx';
+    document.querySelectorAll('.p2-btn-download').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const link = document.createElement('a');
+        link.href = EXCEL_FILE_URL;
+        link.download = 'Разработка_Баланов.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    });
+
     function learnMore() {
       console.log("Batafsil ma'lumot olish so'raldi.");
     }
